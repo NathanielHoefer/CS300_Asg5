@@ -109,38 +109,38 @@ bool Stack::isEmpty()
 }
 
 
+/*****************************************************************************/
 
 
-
-string Stack::toBinary(float decNum, Stack* ptr)
+//	converts decimal number to binary using recursion.
+//		Precondition: Entered value is greater than 0
+//		Postcondition: None
+//		Returns: The binary value of the decimal number
+string Stack::toBinary(int decNum, Stack* ptr)
 {
 
-	int number = decNum;
+	string str;
+	int remainder;
 
-	if (decNum < 0.5)
+
+	// If value isn't 0, push the remainder onto the stack and repeat function
+	if (decNum != 0)
 	{
-		return "";
+		remainder = decNum % 2;
+		ptr->push(remainder);
+		str = ptr->toBinary(decNum / 2, ptr);
 	}
-	else
-	{
-		if (number % 2 > 0)
-		{
-			ptr -> push(1);
-		}
-		else
-		{
-			ptr -> push(0);
-		}
 
-		decNum = number;
-		string str = ptr->toBinary(decNum / 2, ptr);
+	// Empty the stack of its contents.
+	while (!ptr->isEmpty())
+	{
 		stringstream out;
 		out << ptr->top();
-		str = out.str() + str;
+		str += out.str();
 		ptr->pop();
-
-		return str;
 	}
+
+	return str;
 
 }
 

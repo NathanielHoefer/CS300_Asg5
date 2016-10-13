@@ -22,20 +22,6 @@ Functions:
     	> Enter value into toBinary and print binary number to screen.
     	> Ask user if they want to enter another number.
 
-
-	+ toBinary(int decNum) static - converts decimal number to binary using
-		recursion.
-		Precondition: Empty stack is created
-		Postcondition: None
-		Returns: The binary value of the decimal number
-		> Check to see if decNum is zero and if so, retrieve every number
-			in stack while deleting the nodes and placing them into a
-			string. Then return the string.
-		> If not 0, find the remainder of decNum divided by 2.
-		> If the remainder is greater than 0, create a new node with value
-			of 1, otherwise create a new node with the value 0.
-		> The divided value then is fed back into another toBinary.
-
  */
 
 #include "stack.hpp"
@@ -51,6 +37,7 @@ int main()
 
 	bool isExit = false;
 
+	// Begins the loop for the application
 	while (!isExit)
 	{
 
@@ -60,13 +47,27 @@ int main()
 
 		cout << "Binary Converter\n" << endl;
 
-		cout << "Enter a decimal integer: " << endl;
-		cin >> decimalNumber;
+		// Verifies that the number entered is above 0
+		while (!isValid)
+		{
+			cout << "Enter a decimal integer greater than 0: " << endl;
 
+			cin >> decimalNumber;
+
+			if (decimalNumber > 0)
+			{
+				isValid = true;
+			}
+		}
+
+		// Creates the stack to contain the individual binary values
 		Stack s1;
 
+		// outputs the binary value
 		cout << "\n" << s1.toBinary(decimalNumber, &s1) << endl;
 
+		// Loop asking whether to continue or not
+		isValid = false;
 		while (!isValid)
 		{
 			cout << "\nEnter another number? (Y/N)" << endl;

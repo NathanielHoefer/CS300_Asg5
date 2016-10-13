@@ -56,7 +56,18 @@ Functions:
 			> Check the value of top node
 			> If top node pointer returns NULL, then return true
 
-
+		+ toBinary(int decNum) - converts decimal number to binary using
+			recursion.
+			Precondition: Entered value is greater than 0
+			Postcondition: None
+			Returns: The binary value of the decimal number
+			> Check to see if decNum is zero and if so, retrieve every number
+				in stack while deleting the nodes and placing them into a
+				string. Then return the string.
+			> If not 0, find the remainder of decNum divided by 2.
+			> If the remainder is greater than 0, create a new node with value
+				of 1, otherwise create a new node with the value 0.
+			> The divided value then is fed back into another toBinary.
  */
 
 #ifndef STACK_HPP_
@@ -125,8 +136,11 @@ public:
 	bool isEmpty();
 
 
-
-	string toBinary(float decNum, Stack* ptr);
+//	converts decimal number to binary using recursion.
+//		Precondition: Entered value is greater than 0
+//		Postcondition: None
+//		Returns: The binary value of the decimal number
+	string toBinary(int decNum, Stack* ptr);
 };
 
 
