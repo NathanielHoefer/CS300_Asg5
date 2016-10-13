@@ -11,6 +11,7 @@
 #include "node.hpp"
 
 #include <string>
+#include <sstream>
 
 using namespace std;
 
@@ -104,6 +105,42 @@ bool Stack::isEmpty()
 		return true;
 	else
 		return false;
+
+}
+
+
+
+
+
+string Stack::toBinary(float decNum, Stack* ptr)
+{
+
+	int number = decNum;
+
+	if (decNum < 0.5)
+	{
+		return "";
+	}
+	else
+	{
+		if (number % 2 > 0)
+		{
+			ptr -> push(1);
+		}
+		else
+		{
+			ptr -> push(0);
+		}
+
+		decNum = number;
+		string str = ptr->toBinary(decNum / 2, ptr);
+		stringstream out;
+		out << ptr->top();
+		str = out.str() + str;
+		ptr->pop();
+
+		return str;
+	}
 
 }
 

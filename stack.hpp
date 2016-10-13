@@ -55,12 +55,15 @@ Functions:
 			Returns: True if empty
 			> Check the value of top node
 			> If top node pointer returns NULL, then return true
+
+
  */
 
 #ifndef STACK_HPP_
 #define STACK_HPP_
 
 #include "node.hpp"
+#include <string>
 
 using namespace std;
 
@@ -120,6 +123,10 @@ public:
 //		Postcondition: None
 //		Returns: True if empty
 	bool isEmpty();
+
+
+
+	string toBinary(float decNum, Stack* ptr);
 };
 
 
